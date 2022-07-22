@@ -3,10 +3,15 @@
 
    Library Required
     go get -u github.com/nicholasjackson/env
+    
     go get -u github.com/go-sql-driver/mysql [Choose if SQL]
+    
     go get go.mongodb.org/mongo-driver [Choose if Mongo]
+    
     go get -u github.com/gin-gonic/gin [API]
+    
     go get github.com/joho/godotenv [env]
+    
 
    Database 
     MonggoDB
