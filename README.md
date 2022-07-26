@@ -4,7 +4,7 @@
    Library Required
     go get -u github.com/nicholasjackson/env
     
-    go get -u github.com/go-sql-driver/mysql [Choose if SQL]
+    go get -u github.com/go-sql-driver/mysql [Choose if SQL] 
     
     go get go.mongodb.org/mongo-driver [Choose if Mongo]
     
@@ -49,4 +49,7 @@
   5. Create the testing using mocks
 
   [Use Case]
-  1. Request -> [Send Data] -> Handler -> Port Service -> Domain -> Port Data Source -> Data Source -> Port Service -> Domain -> Port Data Source -> Handler -> [Get Data]
+  1. RetreiveData =  REST API -> Handler [Api (GET)] -> Port Service ->  Domain -> Port Repo -> Adapter -> Data Resource
+  
+  [Testing]
+  - Test per File
