@@ -1,28 +1,41 @@
 package datasource
-<<<<<<< Updated upstream
-=======
 
 import (
-	models "REVAMPS-CMI-APPS/internal/domain/model"
+	models "REVAMPS-CMI-APPS/internal/entity/model"
+	"database/sql"
+	"encoding/json"
+	"errors"
 )
 
 type datasource struct {
+	datas map[string][]byte
 }
 
 func NewData() *datasource {
-	return &datasource{}
+	return &datasource{
+		datas: map[string][]byte{},
+	}
 }
 
-func (ds *datasource) Get(id string) (models.Account, error) {
-	InitDBConn()
-	var acc models.Account
-	err := DBClient.Get(&acc, "SELECT * FROM accounts WHERE Id = ?", id)
-	if err != nil {
-		panic(err)
+func (ds *datasource) Retreive(id string) (models.Account, error) {
+	if data, ok := ds.datas[id]; ok {
+		rows := DBClient.QueryRow("Select * from customers where id = ?", id)
+		defer DBClient.Close()
+
+		account := models.Account{}
+
+		if err := rows.Scan(&account); err != sql.ErrNoRows {
+			panic(err)
+		}
+
+		err := json.Unmarshal(data, &account)
+
+		if err != nil {
+			return models.Account{}, errors.New("fail to get value from datas")
+		}
+
+		return account, nil
 	}
 
-	defer DBClient.Close()
-
-	return acc, nil
+	return models.Account{}, errors.New("data not found")
 }
->>>>>>> Stashed changes
