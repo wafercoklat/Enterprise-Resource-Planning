@@ -1,6 +1,4 @@
 package datasource
-<<<<<<< Updated upstream
-=======
 
 import (
 	_ "github.com/go-sql-driver/mysql"
@@ -25,4 +23,3 @@ func InitDBConn() {
 	// Set connection to var _DBClient
 	DBClient = db
 }
->>>>>>> Stashed changes

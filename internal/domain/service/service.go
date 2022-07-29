@@ -1,8 +1,8 @@
 package service
 
 import (
-	models "REVAMPS-CMI-APPS/internal/domain/model"
-	"REVAMPS-CMI-APPS/internal/domain/ports"
+	models "REVAMPS-PHP-GO/internal/domain/model"
+	"REVAMPS-PHP-GO/internal/domain/ports"
 	"fmt"
 )
 

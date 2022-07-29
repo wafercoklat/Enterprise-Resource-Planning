@@ -1,8 +1,8 @@
 package service
 
 import (
-	"REVAMPS-CMI-APPS/internal/domain/model"
-	"REVAMPS-CMI-APPS/mocks"
+	"REVAMPS-PHP-GO/internal/domain/model"
+	"REVAMPS-PHP-GO/mocks"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
@@ -29,7 +29,6 @@ func TestService_GetSuccess(t *testing.T) {
 		CurrencyID:          "IDR, USD",
 		IsDebit:             1,
 		AccountType:         1,
-		LevelAcc:            1,
 		IsDisabled:          1,
 		RequireCostCenter:   1,
 		AllowAllCostCenters: 1,

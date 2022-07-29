@@ -1,41 +1,23 @@
 package datasource
 
-import (
-	models "REVAMPS-CMI-APPS/internal/entity/model"
-	"database/sql"
-	"encoding/json"
-	"errors"
-)
+import "REVAMPS-PHP-GO/internal/domain/model"
 
 type datasource struct {
-	datas map[string][]byte
 }
 
 func NewData() *datasource {
-	return &datasource{
-		datas: map[string][]byte{},
-	}
+	return &datasource{}
 }
 
-func (ds *datasource) Retreive(id string) (models.Account, error) {
-	if data, ok := ds.datas[id]; ok {
-		rows := DBClient.QueryRow("Select * from customers where id = ?", id)
-		defer DBClient.Close()
-
-		account := models.Account{}
-
-		if err := rows.Scan(&account); err != sql.ErrNoRows {
-			panic(err)
-		}
-
-		err := json.Unmarshal(data, &account)
-
-		if err != nil {
-			return models.Account{}, errors.New("fail to get value from datas")
-		}
-
-		return account, nil
+func (ds *datasource) Get(id string) (model.Account, error) {
+	InitDBConn()
+	var acc model.Account
+	err := DBClient.Get(&acc, "SELECT * FROM accounts WHERE Id = ?", id)
+	if err != nil {
+		panic(err)
 	}
 
-	return models.Account{}, errors.New("data not found")
+	defer DBClient.Close()
+
+	return acc, nil
 }

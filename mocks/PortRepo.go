@@ -3,7 +3,7 @@
 package mocks
 
 import (
-	model "REVAMPS-CMI-APPS/internal/domain/model"
+	model "REVAMPS-PHP-GO/internal/domain/model"
 
 	mock "github.com/stretchr/testify/mock"
 )

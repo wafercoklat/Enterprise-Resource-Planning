@@ -1,10 +1,8 @@
 // handler to endPoint
 package handlers
-<<<<<<< Updated upstream
-=======
 
 import (
-	"REVAMPS-CMI-APPS/internal/domain/ports"
+	"REVAMPS-PHP-GO/internal/domain/ports"
 
 	"github.com/gin-gonic/gin"
 )
@@ -26,4 +24,3 @@ func (h *HTTPHandler) ViewDataById(c *gin.Context) {
 	}
 	c.JSON(200, val)
 }
->>>>>>> Stashed changes

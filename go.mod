@@ -1,21 +1,16 @@
-module REVAMPS-CMI-APPS
+module REVAMPS-PHP-GO
 
 go 1.18
 
 require (
-<<<<<<< Updated upstream
-=======
 	github.com/DATA-DOG/go-sqlmock v1.5.0
 	github.com/go-sql-driver/mysql v1.6.0
 	github.com/jmoiron/sqlx v1.3.5
->>>>>>> Stashed changes
 	github.com/joho/godotenv v1.4.0
 	go.mongodb.org/mongo-driver v1.10.0
 )
 
 require (
-<<<<<<< Updated upstream
-=======
 	github.com/davecgh/go-spew v1.1.1 // indirect
 	github.com/gin-contrib/sse v0.1.0 // indirect
 	github.com/go-playground/locales v0.14.0 // indirect
@@ -41,15 +36,11 @@ require (
 
 require (
 	github.com/gin-gonic/gin v1.8.1
->>>>>>> Stashed changes
 	github.com/golang/snappy v0.0.1 // indirect
 	github.com/klauspost/compress v1.13.6 // indirect
 	github.com/montanaflynn/stats v0.0.0-20171201202039-1bf9dbcd8cbe // indirect
 	github.com/pkg/errors v0.9.1 // indirect
-<<<<<<< Updated upstream
-=======
 	github.com/stretchr/testify v1.8.0
->>>>>>> Stashed changes
 	github.com/xdg-go/pbkdf2 v1.0.0 // indirect
 	github.com/xdg-go/scram v1.1.1 // indirect
 	github.com/xdg-go/stringprep v1.0.3 // indirect

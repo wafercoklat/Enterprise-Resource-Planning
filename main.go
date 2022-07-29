@@ -1,9 +1,9 @@
 package main
 
 import (
-	datasource "REVAMPS-CMI-APPS/internal/datasources/sqlDB"
-	"REVAMPS-CMI-APPS/internal/domain/service"
-	"REVAMPS-CMI-APPS/internal/handlers"
+	datasource "REVAMPS-PHP-GO/internal/datasources/sqlDB"
+	"REVAMPS-PHP-GO/internal/domain/service"
+	"REVAMPS-PHP-GO/internal/handlers"
 
 	"github.com/gin-gonic/gin"
 )

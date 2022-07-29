@@ -1,7 +1,7 @@
 package datasource
 
 import (
-	"REVAMPS-CMI-APPS/internal/domain/model"
+	"REVAMPS-PHP-GO/internal/domain/model"
 	"errors"
 
 	"github.com/stretchr/testify/mock"
