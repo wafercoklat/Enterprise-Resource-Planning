@@ -1,8 +1,12 @@
 package datasource
 
 import (
+<<<<<<< Updated upstream
 	"REVAMPS-CMI-APPS/internal/entity/domain"
 	"REVAMPS-CMI-APPS/internal/entity/ports"
+=======
+	models "REVAMPS-CMI-APPS/internal/domain/model"
+>>>>>>> Stashed changes
 	"errors"
 	"os"
 
@@ -25,7 +29,11 @@ func NewData(portdBase_ ports.PortDataSource) *datasource {
 	}
 }
 
+<<<<<<< Updated upstream
 func (ds *datasource) Retreive(_id int) (domain.Account, error) {
+=======
+func (ds *datasource) Get(id string) (models.Account, error) {
+>>>>>>> Stashed changes
 	// Open Connection
 	client, ctx, cancel, err := OpenConn()
 	if err != nil {
