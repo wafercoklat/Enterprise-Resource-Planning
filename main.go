@@ -1,22 +1,39 @@
 package main
 
 import (
-	datasource "REVAMPS-PHP-GO/internal/datasources/sqlDB"
-	"REVAMPS-PHP-GO/internal/domain/service"
-	"REVAMPS-PHP-GO/internal/handlers"
+	datasources "REVAMP-PHP-GO/internal/datasources/sqlDB"
+	"REVAMP-PHP-GO/internal/domain/services"
+	"REVAMP-PHP-GO/internal/handler"
+	"fmt"
 
 	"github.com/gin-gonic/gin"
 )
 
 func main() {
-	// Init
-	dataSource := datasource.NewData()    // Data Source
-	services := service.New(dataSource)   // Start Service
-	handler := handlers.NewHTTP(services) // Start handler
+	// TODO Database
+	dialect := "mysql"
+	dsn := "root:@tcp(localhost:3306)/enterprise022?parseTime=true"
+	datasources, err := datasources.New(dialect, dsn, 10, 10)
+	if err != nil {
+		fmt.Printf("%s", err)
+	}
 
-	// Create Routes
-	r := gin.New()
-	r.GET("/account/:id/", handler.ViewDataById)
+	// TODO Services
+	service := services.New(datasources)
 
-	r.Run(":8008")
+	// TODO Handler
+	handler := handler.New(service)
+
+	// TODO Routes
+	r := gin.Default()
+	r.GET("/account/:id/", handler.AccountFindByID)
+	r.GET("/account/list/", handler.AccountList)
+	r.POST("/account/add/", handler.AccountCreate)
+	r.PUT("/account/update/:id/", handler.AccountUpdate)
+	r.DELETE("/account/delete/:id/", handler.AccountDelete)
+
+	if err := r.Run(":8099"); err != nil {
+		panic(err.Error())
+	}
+
 }
