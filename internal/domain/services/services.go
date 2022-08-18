@@ -16,26 +16,32 @@ func New(port ports.PortRepo) *Services {
 }
 
 func (s *Services) AccountFindByID(id string) *interface{} {
-	data := account.FindById(id, s.port)
+	data, err := account.FindById(id, s.port)
+	if err != nil {
+		panic(err)
+	}
 	return &data
 }
 
 func (s *Services) AccountList() *interface{} {
-	data := account.List(s.port)
+	data, err := account.List(s.port)
+	if err != nil {
+		panic(err)
+	}
 	return &data
 }
 
 func (s *Services) AccountCreate(mdl interface{}) error {
-	data := account.Create(mdl, s.port)
-	return data
+	_, err := account.Create(mdl, s.port)
+	return err
 }
 
 func (s *Services) AccountUpdate(id string, mdl interface{}) error {
-	data := account.Update(id, mdl, s.port)
-	return data
+	_, err := account.Update(id, mdl, s.port)
+	return err
 }
 
 func (s *Services) AccountDelete(id string) error {
-	data := account.Delete(id, s.port)
-	return data
+	_, err := account.Delete(id, s.port)
+	return err
 }
