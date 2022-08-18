@@ -307,35 +307,3 @@ func TestAccount_Delete_Fail(t *testing.T) {
 		})
 	})
 }
-
-// func TestArray(t *testing.T) {
-// 	t.Run("Test Success List", func(t *testing.T) {
-// 		Convey("Test Success List", t, func() {
-// 			// var chickens = []map[string]string{
-// 			// 	{"name": "chicken blue", "gender": "male"},
-// 			// 	{"name": "chicken red", "gender": "male"},
-// 			// 	{"name": "chicken yellow", "gender": "female"},
-// 			// }
-
-// 			var chicken2 = map[string]string{
-// 				"name": "chicken red", "gender": "male",
-// 			}
-
-// 			// So(chicken2, ShouldBeIn, chickens)
-// 			So(chicken2, ShouldContainKey, "name")
-// 		})
-// 	})
-// }
-
-// func TestAccount_List_Fail(t *testing.T) {
-// 	t.Run("Test Find By ID", func(t *testing.T) {
-// 		Convey("Test Find By ID", t, func() {
-// 			acc := account.List(datasource)
-// 			fmt.Println(acc)
-// 			_account := acc.(*account.Account)
-// 			So(_account.AccountCode, ShouldNotEqual, "20")
-// 			So(_account.AccountName, ShouldNotEqual, "Test")
-// 		})
-
-// 	})
-// }
