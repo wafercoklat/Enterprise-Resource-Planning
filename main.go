@@ -13,7 +13,7 @@ func main() {
 	// TODO Database
 	dialect := "mysql"
 	dsn := "root:@tcp(localhost:3306)/enterprise022?parseTime=true"
-	datasources, err := datasources.New(dialect, dsn, 10, 10)
+	datasources, err := datasources.New(dialect, dsn, 1, 1)
 	if err != nil {
 		fmt.Printf("%s", err)
 	}

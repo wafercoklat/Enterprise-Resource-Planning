@@ -1,6 +1,8 @@
-package account
+package modules
 
-import "REVAMP-PHP-GO/internal/domain/ports"
+import (
+	"REVAMP-PHP-GO/internal/domain/ports"
+)
 
 var table string = "accounts"
 
@@ -19,45 +21,28 @@ type Account struct {
 
 var listaccount []Account
 
-func FindById(id string, p ports.PortRepo) interface{} {
-	data, err := p.FindByID(id, &Account{}, table)
-	if err != nil {
-		panic(err)
-	}
-	return data
+func FindById(id string, p ports.PortRepo) (interface{}, error) {
+	return p.FindByID(id, &Account{}, table)
 }
 
-func List(p ports.PortRepo) interface{} {
-	data, err := p.List(&listaccount, table)
-	if err != nil {
-		panic(err)
-	}
-	return data
+func List(p ports.PortRepo) (interface{}, error) {
+	return p.List(&listaccount, table)
 }
 
-func Create(mdl interface{}, p ports.PortRepo) error {
+func Create(mdl interface{}, p ports.PortRepo) (int64, error) {
 	col := "accountcode, parentaccountid, accountname, currencyid, isdebit, accounttype, isdisabled, requirecostcenter, allowallcostcenters"
 	val := ":accountcode, :parentaccountid, :accountname, :currencyid, :isdebit, :accounttype, :isdisabled, :requirecostcenter, :allowallcostcenters"
-	_, err := p.Create(mdl, table, col, val)
-	if err != nil {
-		panic(err)
-	}
-	return err
+	id, err := p.Create(mdl, table, col, val)
+	return id, err
 }
 
-func Update(id string, mdl interface{}, p ports.PortRepo) error {
+func Update(id string, mdl interface{}, p ports.PortRepo) (int64, error) {
 	val := "accountcode = :accountcode, parentaccountid = :parentaccountid, accountname = :accountname, currencyid = :currencyid, isdebit = :isdebit, accounttype = :accounttype, isdisabled = :isdisabled, requirecostcenter =:requirecostcenter, allowallcostcenters = :allowallcostcenters"
-	_, err := p.Update(mdl, id, table, val)
-	if err != nil {
-		panic(err)
-	}
-	return err
+	id_, err := p.Update(mdl, id, table, val)
+	return id_, err
 }
 
-func Delete(id string, p ports.PortRepo) error {
-	_, err := p.Delete(id, table)
-	if err != nil {
-		panic(err)
-	}
-	return err
+func Delete(id string, p ports.PortRepo) (int64, error) {
+	id_, err := p.Delete(id, table)
+	return id_, err
 }
