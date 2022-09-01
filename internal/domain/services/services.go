@@ -1,7 +1,7 @@
 package services
 
 import (
-	account "REVAMP-PHP-GO/internal/domain/modules"
+	moduls "REVAMP-PHP-GO/internal/domain/modules"
 	"REVAMP-PHP-GO/internal/domain/ports"
 )
 
@@ -15,8 +15,9 @@ func New(port ports.PortRepo) *Services {
 	}
 }
 
+// Account Module
 func (s *Services) AccountFindByID(id string) *interface{} {
-	data, err := account.FindById(id, s.port)
+	data, err := moduls.FindById(id, s.port)
 	if err != nil {
 		panic(err)
 	}
@@ -24,7 +25,7 @@ func (s *Services) AccountFindByID(id string) *interface{} {
 }
 
 func (s *Services) AccountList() *interface{} {
-	data, err := account.List(s.port)
+	data, err := moduls.List(s.port)
 	if err != nil {
 		panic(err)
 	}
@@ -32,16 +33,48 @@ func (s *Services) AccountList() *interface{} {
 }
 
 func (s *Services) AccountCreate(mdl interface{}) error {
-	_, err := account.Create(mdl, s.port)
+	_, err := moduls.Create(mdl, s.port)
 	return err
 }
 
 func (s *Services) AccountUpdate(id string, mdl interface{}) error {
-	_, err := account.Update(id, mdl, s.port)
+	_, err := moduls.Update(id, mdl, s.port)
 	return err
 }
 
 func (s *Services) AccountDelete(id string) error {
-	_, err := account.Delete(id, s.port)
+	_, err := moduls.Delete(id, s.port)
+	return err
+}
+
+func (s *Services) UserFindByID(id string) *interface{} {
+	data, err := moduls.UserFindById(id, s.port)
+	if err != nil {
+		panic(err)
+	}
+	return &data
+}
+
+// User Module
+func (s *Services) UserList() *interface{} {
+	data, err := moduls.UserList(s.port)
+	if err != nil {
+		panic(err)
+	}
+	return &data
+}
+
+func (s *Services) UserCreate(mdl interface{}) error {
+	_, err := moduls.UserCreate(mdl, s.port)
+	return err
+}
+
+func (s *Services) UserUpdate(id string, mdl interface{}) error {
+	_, err := moduls.UserUpdate(id, mdl, s.port)
+	return err
+}
+
+func (s *Services) UserDelete(id string) error {
+	_, err := moduls.UserDelete(id, s.port)
 	return err
 }

@@ -10,11 +10,9 @@ Testing
 
     $ go get github.com/smartystreets/goconvey
 
-Database
+Run With docker
 
-- MYSQL (LOCAL)
-- Docker (MYSQL LOCAL)
-  docker run --name enterprise022 -p 3306:3306 -e MYSQL_ROOT_PASSWORD=qazse4321 -d mysql:8.0
+- docker-compose up
 
 Hexagonal Architecture  
 
