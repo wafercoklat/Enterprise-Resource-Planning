@@ -1,26 +1,16 @@
-version: '3.7'
-
 services:
-  db:
-    image: mysql
-    restart: always
-    environment:
-      MYSQL_ROOT_PASSWORD: qazse4321
-      MYSQL_DATABASE: eDatabase
-    # we mount a data volume to make sure we don't lose data
-    volumes:
-      - mysql_data:/var/lib/mysql
-    command: --default-authentication-plugin=mysql_native_password
-    build:
-      context: .
-      dockerfile: db.Dockerfile
-    networks:
-      - default
-    ports:
-      # <Port exposed> : <MySQL Port running inside container>
-      - "3306:3306"
-    # setting some env vars to create the DB
-networks:
-  default:
+    app:
+        image: mysql
+        container_name: mysqlDB
+        ports:
+            - "3306:3306"
+        expose:
+            - 3306
+        volumes:
+            - dbdata:/var/lib/mysql
+        environment:
+            MYSQL_ROOT_USER: root
+            MYSQL_ROOT_PASSWORD: qazse4321
+            MYSQL_DATABASE: enterprise022
 volumes:
-  mysql_data:
+    dbdata:

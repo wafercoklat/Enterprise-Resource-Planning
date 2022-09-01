@@ -4,7 +4,8 @@ import (
 	"REVAMP-PHP-GO/internal/domain/ports"
 )
 
-var table string = "accounts"
+var tbl_account string = "accounts"
+var listaccount []Account
 
 type Account struct {
 	Id                  int    `json:"id,omitempty"`
@@ -19,30 +20,28 @@ type Account struct {
 	AllowAllCostCenters int    `json:"allowallcostcenters,omitempty"`
 }
 
-var listaccount []Account
-
 func FindById(id string, p ports.PortRepo) (interface{}, error) {
-	return p.FindByID(id, &Account{}, table)
+	return p.FindByID(id, &Account{}, tbl_account)
 }
 
 func List(p ports.PortRepo) (interface{}, error) {
-	return p.List(&listaccount, table)
+	return p.List(&listaccount, tbl_account)
 }
 
 func Create(mdl interface{}, p ports.PortRepo) (int64, error) {
 	col := "accountcode, parentaccountid, accountname, currencyid, isdebit, accounttype, isdisabled, requirecostcenter, allowallcostcenters"
 	val := ":accountcode, :parentaccountid, :accountname, :currencyid, :isdebit, :accounttype, :isdisabled, :requirecostcenter, :allowallcostcenters"
-	id, err := p.Create(mdl, table, col, val)
+	id, err := p.Create(mdl, tbl_account, col, val)
 	return id, err
 }
 
 func Update(id string, mdl interface{}, p ports.PortRepo) (int64, error) {
 	val := "accountcode = :accountcode, parentaccountid = :parentaccountid, accountname = :accountname, currencyid = :currencyid, isdebit = :isdebit, accounttype = :accounttype, isdisabled = :isdisabled, requirecostcenter =:requirecostcenter, allowallcostcenters = :allowallcostcenters"
-	id_, err := p.Update(mdl, id, table, val)
+	id_, err := p.Update(mdl, id, tbl_account, val)
 	return id_, err
 }
 
 func Delete(id string, p ports.PortRepo) (int64, error) {
-	id_, err := p.Delete(id, table)
+	id_, err := p.Delete(id, tbl_account)
 	return id_, err
 }
