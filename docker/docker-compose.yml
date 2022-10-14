@@ -7,10 +7,8 @@ services:
         expose:
             - 3306
         volumes:
-            - dbdata:/var/lib/mysql
+            - ./init:/docker-entrypoint-initdb.d
         environment:
             MYSQL_ROOT_USER: root
             MYSQL_ROOT_PASSWORD: qazse4321
             MYSQL_DATABASE: enterprise022
-volumes:
-    dbdata:
