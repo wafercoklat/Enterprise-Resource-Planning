@@ -44,52 +44,52 @@ Path
 
 Features :
 
-|── Create, Read, Use, Delete
-    ── Global
-        - Account (DONE)
-        - User (DONE)
-        - Customer
-        - Supplier
-        - Estimation (DONE)
-        - Autorizations
-        - Items
-        - Bank Deposit
-        - Bank Account
-        - Bank Account Reconciliation
-        - Dashboard Report
-    ── Sales
-        - Sales Order
-        - Surat Jalan / Surat Pengiriman Barang
-        - Sales Invoice
-        - Sales Return
-    ── Service
-        - Service Order
-        - Service Invoice
-    ── Reimbursement
-        - AP Note (Biaya Sales)
-        - Expense Note (Biaya Service)
-        - Reimburse Invoice
-    ── Kasbon/DP
-        - Pending Cash
-        - Nota Jaminan
-    ── Payment/Receive
-        - Payment Voucher
-        - Receive Voucher
-    ── Purchase
-        - Purchase Request
-        - Purchase Order
-        - Purchase Invoice
-        - Receipt Purchase
-    ── Asset
-        - Asset
-        - Asset Depresiasi
-        - Asset Rental
-        - Asset Purchase
-        - Asset Sales
-    ── Jurnal
-        - GL Journal
-        - Ledger
-    ── Inventory
-        - Good Transafer (Transfer Barang)
-        - Inventory Usage
-        - Inventory Adjustment
+    |── Create, Read, Use, Delete
+        ── Global
+            - Account (DONE)
+            - User (DONE)
+            - Customer
+            - Supplier
+            - Estimation (DONE)
+            - Autorizations
+            - Items
+            - Bank Deposit
+            - Bank Account
+            - Bank Account Reconciliation
+            - Dashboard Report
+        ── Sales
+            - Sales Order
+            - Surat Jalan / Surat Pengiriman Barang
+            - Sales Invoice
+            - Sales Return
+        ── Service
+            - Service Order
+            - Service Invoice
+        ── Reimbursement
+            - AP Note (Biaya Sales)
+            - Expense Note (Biaya Service)
+            - Reimburse Invoice
+        ── Kasbon/DP
+            - Pending Cash
+            - Nota Jaminan
+        ── Payment/Receive
+            - Payment Voucher
+            - Receive Voucher
+        ── Purchase
+            - Purchase Request
+            - Purchase Order
+            - Purchase Invoice
+            - Receipt Purchase
+        ── Asset
+            - Asset
+            - Asset Depresiasi
+            - Asset Rental
+            - Asset Purchase
+            - Asset Sales
+        ── Jurnal
+            - GL Journal
+            - Ledger
+        ── Inventory
+            - Good Transafer (Transfer Barang)
+            - Inventory Usage
+            - Inventory Adjustment
