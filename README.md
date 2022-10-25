@@ -53,7 +53,7 @@ Features :
             - User (DONE)
             - Customer
             - Supplier
-            - Estimation
+            - Estimation (DONE)
             - Autorizations
             - Items
             - Bank Deposit
@@ -78,7 +78,7 @@ Features :
         ── Payment/Receive
             - Payment Voucher
             - Receive Voucher
-                Case :  - Cash (Penagihan Cash)
+             Case :  - Cash (Penagihan Cash)
                         - Transfer : Bank Account
                         - Cheque/Giro : Bank Account, Due Date
                         - Settlement  
