@@ -1,4 +1,4 @@
-package Estimation
+package estimation
 
 import (
 	domain "STACK-ERP/modules/estimation/domain"

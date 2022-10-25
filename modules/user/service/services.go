@@ -1,4 +1,4 @@
-package account
+package user
 
 import (
 	domain "STACK-ERP/modules/account/domain"
@@ -17,9 +17,7 @@ func NewService(port port.PortRepo) *Services {
 }
 
 func (s *Services) FindByID(id string) *domain.Account {
-	column := "ID"
-
-	data, err := s.portRepo.FindByID(id, &domain.Account{}, domain.Tbl_account, column)
+	data, err := s.portRepo.FindByID(id, &domain.Account{}, domain.Tbl_account)
 	if err != nil {
 		fmt.Println(err)
 	}

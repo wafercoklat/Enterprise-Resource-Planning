@@ -15,7 +15,7 @@ type Repository struct {
 }
 
 // Implement
-func New(dialect, dsn string, idleConn, maxConn int) (port.PortRepo, error) {
+func New(dialect, dsn string, idleConn, maxConn int) (interface{}, error) {
 	db, err := sqlx.Open(dialect, dsn)
 	if err != nil {
 		fmt.Printf("Database Error - Connection - Cannot Create Connection to Database Err: %s", err)
@@ -27,19 +27,21 @@ func New(dialect, dsn string, idleConn, maxConn int) (port.PortRepo, error) {
 
 	db.SetMaxIdleConns(idleConn)
 	db.SetMaxOpenConns(maxConn)
+	var a port.PortRepo
 
-	return &Repository{db}, nil
+	a = &Repository{db}
+	return a, nil
 }
 
 func (r *Repository) Close() {
 	r.db.Close()
 }
 
-func (r *Repository) FindByID(id string, model interface{}, tbl string) (interface{}, error) {
+func (r *Repository) FindByID(id string, model interface{}, tbl, col string) (interface{}, error) {
 	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
 	defer cancel()
 
-	qry := fmt.Sprintf("SELECT * FROM %s WHERE ID = ?", tbl)
+	qry := fmt.Sprintf("SELECT * FROM %s WHERE %s = ?", tbl, col)
 
 	err := r.db.GetContext(ctx, model, qry, id)
 	// defer r.Close()

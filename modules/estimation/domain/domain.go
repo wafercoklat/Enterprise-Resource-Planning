@@ -1,9 +1,9 @@
-package account
+package estimation
 
 import "time"
 
 type EstimationHeader struct {
-	ID                int       `json:"id,omitempty" db:"ID"`
+	EstimationID      int       `json:"id,omitempty" db:"EstimationID"`
 	CustomerID        int       `json:"customerid,omitempty" db:"CustomerID"`
 	EffectiveDate     time.Time `json:"effectiveDate,omitempty" db:"EffectiveDate"`
 	Type              string    `json:"type,omitempty" db:"Type"`
@@ -76,7 +76,7 @@ var (
 
 type Services interface {
 	FindByID(id string) *Estimation
-	List() *Estimation
+	List() *[]EstimationHeader
 	Update(id string, mdl Estimation) error
 	Delete(id string) error
 	Create(data Estimation) error

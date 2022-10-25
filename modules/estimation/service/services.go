@@ -1,4 +1,4 @@
-package account
+package estimation
 
 import (
 	domain "STACK-ERP/modules/estimation/domain"
@@ -19,16 +19,16 @@ func NewService(port port.PortRepo) *Services {
 
 func (s *Services) FindByID(id string) *domain.Estimation {
 	var data domain.Estimation
+	column := "EstimationID"
 
-	// Get Header
-	header, err := s.portRepo.FindByID(id, &domain.EstimationHeader{}, domain.Tbl_estimation["header"])
+	header, err := s.portRepo.FindByID(id, &domain.EstimationHeader{}, domain.Tbl_estimation["header"], column)
 	if err != nil {
-		fmt.Println(err)
+		fmt.Println("Service", err)
 	}
 	data.EstHeader = header.(domain.EstimationHeader)
 
 	if domain.Tbl_estimation["detail"] != "" {
-		detail, err := s.portRepo.FindByID(id, &domain.EstimationDetails{}, domain.Tbl_estimation["detail"])
+		detail, err := s.portRepo.FindByID(id, &[]domain.EstimationDetails{}, domain.Tbl_estimation["detail"], column)
 		if err != nil {
 			fmt.Println(err)
 		}
@@ -37,12 +37,12 @@ func (s *Services) FindByID(id string) *domain.Estimation {
 	return &data
 }
 
-func (s *Services) EstimationList() *domain.Estimation {
+func (s *Services) List() *[]domain.EstimationHeader {
 	data, err := s.portRepo.List(&domain.EstList, domain.Tbl_estimation["header"])
 	if err != nil {
 		fmt.Println(err)
 	}
-	return data.(*domain.Estimation)
+	return data.(*[]domain.EstimationHeader)
 }
 
 func (s *Services) Create(data domain.Estimation) error {
